@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { useSelector, useDispatch } from "react-redux";
+
+import "./App.css";
+import CounterApp from "./components/CounterApp";
+import ThemeBtn from "./components/ThemeBtn";
+
+const App = ({ children }) => {
+	const theme = useSelector((storeState) => storeState.theme);
+	return (
+		<div
+			style={{ backgroundColor: theme.bgColor, color: theme.textColor }}
+			className="App"
+		>
+			<CounterApp />
+			<ThemeBtn />
+		</div>
+	);
+};
 
 export default App;
